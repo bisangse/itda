@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>잇다 - 부동산중개플랫폼</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1 onclick="showSection('home')" style="cursor: pointer;">잇다</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">홈</a>
+                <a href="#search" class="nav-link">매물검색</a>
+                <a href="#my-page" class="nav-link" id="myPageLink" style="display: none;">마이페이지</a>
+                <a href="#login" class="nav-link" id="loginLink">로그인</a>
+                <a href="#register" class="nav-link" id="registerLink">회원가입</a>
+                <a href="#" class="nav-link" id="logoutLink" style="display: none;" onclick="logout()">로그아웃</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main-content">
+        <!-- 홈 섹션 -->
+        <section id="home" class="section active">
+            <!-- 검색바 -->
+            <div class="search-header">
+                <div class="search-container-main">
+                    <input type="text" placeholder="어떤 방을 찾으세요?" class="main-search-input">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 매물 유형 카드들 -->
+            <div class="property-types">
+                <div class="property-card">
+                    <div class="card-content">
+                        <h3>원/투룸</h3>
+                        <p>주택/빌라, 오피스텔 아파트 모든 전월세 매물!</p>
+                        <div class="card-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="card-content">
+                        <h3>아파트</h3>
+                        <p>가장 빠른 실거래가 <i class="fas fa-bolt"></i></p>
+                        <div class="card-badge">새단장</div>
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="card-content">
+                        <h3>주택/빌라</h3>
+                        <div class="card-icon">
+                            <i class="fas fa-house"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="card-content">
+                        <h3>오피스텔</h3>
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 매물 등록 배너 -->
+            <div class="register-banner">
+                <div class="banner-content">
+                    <p>우리집 등록하고, 방을 내놓아보세요!</p>
+                    <div class="banner-buttons">
+                        <button class="banner-btn">
+                            <i class="fas fa-plus"></i>
+                            등록하기
+                        </button>
+                        <button class="banner-btn">
+                            <i class="fas fa-hand-point-up"></i>
+                            방내놓기
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 이사 비용 배너 -->
+            <div class="moving-banner">
+                <div class="moving-content">
+                    <div class="moving-text">
+                        <h4>저렴한 원룸 이사 비용</h4>
+                        <p>숨고에서 1분 견적 비교하기</p>
+                    </div>
+                    <div class="moving-image">
+                        <i class="fas fa-truck"></i>
+                        <div class="page-indicator">1/2</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI 추천 섹션 -->
+            <div class="ai-recommendation">
+                <div class="recommendation-header">
+                    <i class="fas fa-search"></i>
+                    <span>쾌활한 탁상시계님이 관심있는 서초동 주변, AI가 대신 찾아봤어요</span>
+                    <i class="fas fa-info-circle"></i>
+                </div>
+            </div>
+
+            <!-- 해시태그 필터 -->
+            <div class="hashtag-filters">
+                <button class="hashtag-btn active">#인기매물</button>
+                <button class="hashtag-btn">#혼족맞춤</button>
+                <button class="hashtag-btn">#옥탑감성</button>
+                <button class="hashtag-btn">#단기월세</button>
+            </div>
+
+            <!-- 핫딜 섹션 -->
+            <div class="hot-deals">
+                <div class="hot-deals-header">
+                    <i class="fas fa-trophy"></i>
+                    <span>서초동 요즘 가장 '핫'한 배울</span>
+                    <div class="neighborhood-info">
+                        <i class="fas fa-search"></i>
+                        우리 동네정보가 궁금하다면?
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단 네비게이션 -->
+            <div class="bottom-nav">
+                <div class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>홈</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-heart"></i>
+                    <span>관심목록</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>지도</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-comments"></i>
+                    <span>동네이야기</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-th"></i>
+                    <span>더보기</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 매물 검색 섹션 -->
+        <section id="search" class="section">
+            <div class="search-container">
+                <h2>매물 검색</h2>
+                <div class="search-form">
+                    <div class="search-row">
+                        <select id="propertyType" class="search-input">
+                            <option value="">매물 유형</option>
+                            <option value="아파트">아파트</option>
+                            <option value="빌라">빌라</option>
+                            <option value="단독주택">단독주택</option>
+                            <option value="오피스텔">오피스텔</option>
+                            <option value="상가">상가</option>
+                            <option value="사무실">사무실</option>
+                        </select>
+                        <select id="dealType" class="search-input">
+                            <option value="">거래 유형</option>
+                            <option value="매매">매매</option>
+                            <option value="전세">전세</option>
+                            <option value="월세">월세</option>
+                        </select>
+                    </div>
+                    <div class="search-row">
+                        <input type="text" id="city" class="search-input" placeholder="시/도">
+                        <input type="text" id="district" class="search-input" placeholder="구/군">
+                    </div>
+                    <div class="search-row">
+                        <input type="number" id="minPrice" class="search-input" placeholder="최소 가격 (만원)">
+                        <input type="number" id="maxPrice" class="search-input" placeholder="최대 가격 (만원)">
+                    </div>
+                    <button class="btn btn-primary" onclick="searchProperties()">검색</button>
+                </div>
+                
+                <div class="properties-grid" id="propertiesGrid">
+                    <!-- 검색 결과가 여기에 표시됩니다 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 로그인 섹션 -->
+        <section id="login" class="section">
+            <div class="auth-container">
+                <h2>로그인</h2>
+                <form class="auth-form" onsubmit="login(event)">
+                    <div class="form-group">
+                        <label for="loginEmail">이메일</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">비밀번호</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">로그인</button>
+                </form>
+                <p class="auth-switch">
+                    계정이 없으신가요? <a href="#" onclick="showSection('register')">회원가입</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- 회원가입 섹션 -->
+        <section id="register" class="section">
+            <div class="auth-container">
+                <h2>회원가입</h2>
+                <form class="auth-form" onsubmit="register(event)">
+                    <div class="form-group">
+                        <label for="regName">이름</label>
+                        <input type="text" id="regName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">이메일</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">전화번호</label>
+                        <input type="tel" id="regPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">비밀번호</label>
+                        <input type="password" id="regPassword" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="userType">회원 유형</label>
+                        <select id="userType" onchange="toggleBrokerInfo()">
+                            <option value="일반사용자">일반사용자</option>
+                            <option value="중개사">중개사</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 중개사 정보 (중개사 선택 시에만 표시) -->
+                    <div id="brokerInfo" style="display: none;">
+                        <div class="form-group">
+                            <label for="licenseNumber">중개사 등록번호</label>
+                            <input type="text" id="licenseNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="companyName">회사명</label>
+                            <input type="text" id="companyName">
+                        </div>
+                        <div class="form-group">
+                            <label for="companyAddress">회사 주소</label>
+                            <input type="text" id="companyAddress">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">회원가입</button>
+                </form>
+                <p class="auth-switch">
+                    이미 계정이 있으신가요? <a href="#" onclick="showSection('login')">로그인</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- 마이페이지 섹션 -->
+        <section id="my-page" class="section">
+            <div class="my-page-container">
+                <h2>마이페이지</h2>
+                <div class="user-info" id="userInfo">
+                    <!-- 사용자 정보가 여기에 표시됩니다 -->
+                </div>
+                
+                <div class="my-page-tabs">
+                    <button class="tab-btn active" onclick="showTab('my-properties')">내 매물</button>
+                    <button class="tab-btn" onclick="showTab('add-property')">매물 등록</button>
+                </div>
+                
+                <div id="my-properties" class="tab-content active">
+                    <div class="properties-list" id="myPropertiesList">
+                        <!-- 내 매물 목록이 여기에 표시됩니다 -->
+                    </div>
+                </div>
+                
+                <div id="add-property" class="tab-content">
+                    <form class="property-form" onsubmit="addProperty(event)">
+                        <div class="form-group">
+                            <label for="propTitle">제목</label>
+                            <input type="text" id="propTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="propDescription">설명</label>
+                            <textarea id="propDescription" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="propType">매물 유형</label>
+                                <select id="propType" required>
+                                    <option value="아파트">아파트</option>
+                                    <option value="빌라">빌라</option>
+                                    <option value="단독주택">단독주택</option>
+                                    <option value="오피스텔">오피스텔</option>
+                                    <option value="상가">상가</option>
+                                    <option value="사무실">사무실</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="propDealType">거래 유형</label>
+                                <select id="propDealType" required>
+                                    <option value="매매">매매</option>
+                                    <option value="전세">전세</option>
+                                    <option value="월세">월세</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="propPrice">가격 (만원)</label>
+                                <input type="number" id="propPrice" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="propArea">면적 (㎡)</label>
+                                <input type="number" id="propArea" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="propRooms">방 개수</label>
+                                <input type="number" id="propRooms" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="propBathrooms">화장실 개수</label>
+                                <input type="number" id="propBathrooms" value="1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="propAddress">주소</label>
+                            <input type="text" id="propAddress" placeholder="예: 서울시 강남구 역삼동" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">매물 등록</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 로딩 스피너 -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- 알림 메시지 -->
+    <div id="notification" class="notification" style="display: none;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
